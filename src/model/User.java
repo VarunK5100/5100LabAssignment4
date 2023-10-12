@@ -51,7 +51,7 @@ public class User {
         this.emailTextField = emailTextField;
     }
     public String getMessage(){
-        return this.messageTextField;
+        return messageTextField;
     }
     public void setMessage(String messageTextField){
         this.messageTextField=messageTextField;

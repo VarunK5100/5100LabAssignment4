@@ -112,8 +112,8 @@ public class FormPanel extends javax.swing.JPanel {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 631, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(109, 109, 109))
+                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 477, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(108, 108, 108))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -183,7 +183,7 @@ public class FormPanel extends javax.swing.JPanel {
                             .addComponent(jLabel3)
                             .addComponent(jLabel4)
                             .addComponent(jLabel5))
-                        .addGap(175, 175, 175)
+                        .addGap(222, 222, 222)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(firstNameTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 152, Short.MAX_VALUE)
                             .addComponent(lastNameTextField)
@@ -254,108 +254,7 @@ public class FormPanel extends javax.swing.JPanel {
     private void submitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitButtonActionPerformed
         // TODO add your handling code here:
       
-        String firstName=firstNameTextField.getText();
-        String lastName=lastNameTextField.getText();
-        String age=ageTextField.getText();
-        String email=emailTextField.getText();
-        String message=messageTextField.getText();
-        String gender=GenderButtonGrp.getSelection().getActionCommand();
-        System.out.println(gender);
-        String type=patientCategory.getSelectedItem().toString();
-          User newUser=new User();
-        newUser.setFirstName(firstNameTextField.getText());
-        //System.out.println(firstName);
-        newUser.setImage(icon);
-        newUser.setLastName(lastNameTextField.getText());
-         newUser.setAge(ageTextField.getText());
-         newUser.setEmail(emailTextField.getText());
-         newUser.setGender(GenderButtonGrp.getSelection().getActionCommand());
-         newUser.setMessage(messageTextField.getText());
-         newUser.setCategory(patientCategory.getSelectedItem().toString());
-         
-        //boolean numeric=true;
-        String errorMsg="";
-        String infoMsg="";
-        String regex1 = "[0-9]+";
-        String regex2="[A-Za-z]+.";
-        Pattern regexString = Pattern.compile(regex1);
-        Matcher m=regexString.matcher(firstName);
-        Matcher m1=regexString.matcher(lastName);
-        Pattern regexString2=Pattern.compile(regex2);
-        Matcher m2=regexString2.matcher(age);
-        Integer intage=Integer.parseInt(age);
-        try{
-            if(firstName.isEmpty()||m.matches()==true){
-                errorMsg="Entry in firstname is invalid, field cannot be blank or have numerical entry\n";
-                //JOptionPane.showMessageDialog(this, "Entry in firstname is invalid", "Error", HEIGHT);
-            }
-            else{
-                infoMsg=infoMsg+firstName+"\n";
-            }
-            if(lastName.isEmpty()||m1.matches()==true){
-                errorMsg=errorMsg+ " Entry in last name is invalid, field cannot be blank or have numerial entry\n";
-            }
-            else{
-                infoMsg=infoMsg+" "+lastName+"\n";
-            }
-            if(age.isEmpty()||m2.matches()==true||intage<0){
-                errorMsg=errorMsg+ " Entry in field is invalid, age cannot be blank,negative or have characters as input\n";
-            }
-            else{
-                infoMsg=infoMsg+" "+age+"\n";
-            }
-            String splitEmail[]=email.split("@");
-            for(int i=0;i<splitEmail.length;i++){
-                System.out.println(splitEmail[i]);
-            }
-            if(email.isEmpty()||!email.contains("@")||splitEmail[0].isEmpty()||splitEmail[1].isEmpty()){
-                errorMsg=errorMsg + "Email field should have a valid address containing @ with an existing prefix and suffix\n";
-            }
-            else{
-                infoMsg=infoMsg + " "+email+"\n";
-            }
-            if(message.isEmpty()){
-                errorMsg=errorMsg + "message field cannot be empty";
-            }
-            else{
-                infoMsg=infoMsg+ " "+message;
-            }
-            if(GenderButtonGrp.getSelection()==null){
-                errorMsg=errorMsg+ "no gender was selected\n";
-                //JOptionPane.showMessageDialog(this, errorMsg, "Alert", HEIGHT);
-              
-            }
-            else{
-                infoMsg=infoMsg+"\n"+ gender;
-            //JOptionPane.showMessageDialog(this,infoMsg , "Alert", HEIGHT);
-        }
-            if(type=="None"){
-                errorMsg=errorMsg+ "no category was selected, none is not a valid selection";
-                //JOptionPane.showMessageDialog(this, errorMsg, "Alert", HEIGHT);
-            }
-            else{
-                infoMsg=infoMsg+"\n"+ type;
-            //JOptionPane.showMessageDialog(this,infoMsg , "Alert", HEIGHT);
-            }
-            if(errorMsg.isEmpty()==false){
-                JOptionPane.showMessageDialog(this, errorMsg, "Alert", HEIGHT);
-                
-
-            }
-            else{
-                submitted = true;
-                if(submitted){
-                JOptionPane.showMessageDialog(this, infoMsg, "Alert", HEIGHT);
-                PanelForm2 newFormPanel2=new PanelForm2(newUser);
-                bottomPanel.add(newFormPanel2);
-                CardLayout layout=(CardLayout)bottomPanel.getLayout();
-                layout.next(bottomPanel);        
-                }
-            }
-            
-        }catch (Exception e){
-            //JOptionPane.showMessageDialog(this, "Default error", "Error", HEIGHT);
-        }
+       
         /*if(numeric){
             errorMsg="Numeric not allowed in first name field";
         }
@@ -440,7 +339,7 @@ public class FormPanel extends javax.swing.JPanel {
         newUser.setLastName(lastNameTextField.getText());
          newUser.setAge(ageTextField.getText());
          newUser.setEmail(emailTextField.getText());
-
+         newUser.setMessage(messageTextField.getText());
          newUser.setGender(GenderButtonGrp.getSelection().getActionCommand());
          newUser.setCategory(patientCategory.getSelectedItem().toString());
          
